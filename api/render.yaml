@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: inext-api
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run db:generate && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false          # set manually in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true  # Render auto-generates a secure value
+      - key: FRONTEND_URL
+        value: https://inext.iitp.ac.in
+      - key: PORT
+        value: "4000"
