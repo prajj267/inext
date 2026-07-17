@@ -18,6 +18,29 @@ npm run db:generate
 npm run dev
 ```
 
+## Deploy to Railway (Recommended)
+
+1. Push this folder to a Git repository (see parent README)
+2. Create a new project on Railway.app
+3. Connect your repository
+4. Set **Root Directory** to `api`
+5. Add environment variables in the Railway dashboard:
+   - `DATABASE_URL` — your Neon PostgreSQL connection string
+   - `JWT_SECRET` — generate with `openssl rand -base64 32`
+   - `FRONTEND_URL` — `https://inext.iitp.ac.in`
+   - `ADMIN_EMAIL` — `arijitroy@iitp.ac.in`
+   - `ADMIN_PASSWORD` — secure password
+   - `NODE_ENV` — `production`
+6. Deploy
+
+Your API will be live at `https://your-project.railway.app`.
+
+**Advantages over Render**:
+- No spin-down (stays awake)
+- Faster cold starts
+- Better build times
+- $5 free credit/month
+
 ## Deploy to Render
 
 1. Push this folder to a Git repository
