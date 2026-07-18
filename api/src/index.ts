@@ -43,12 +43,14 @@ app.use('/api/members/upload-photo', upload.single('photo'));
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 // ── ROUTES ───────────────────────────────────────────────────
+console.log('Registering routes...');
 app.use('/api/auth',         authRoutes);
 app.use('/api/members',      membersRoutes);
 app.use('/api/publications', publicationsRoutes);
 app.use('/api/projects',     projectsRoutes);
 app.use('/api/news',         newsRoutes);
 app.use('/api/achievements', achievementsRoutes);
+console.log('Routes registered');
 
 // ── HEALTH CHECK ─────────────────────────────────────────────
 app.get('/health', (_req, res) => {
