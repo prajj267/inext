@@ -12,6 +12,8 @@ const allowedOrigins = [
   process.env.FRONTEND_URL ?? 'https://inext.iitp.ac.in',
   'http://localhost:3000',  // local dev
   'http://localhost:3001',
+  'http://localhost:8000',  // local testing with http-server
+  'http://127.0.0.1:8000',  // local testing with http-server (IP)
 ];
 
 app.use(cors({
