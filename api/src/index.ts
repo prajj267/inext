@@ -59,27 +59,27 @@ const loadRoutes = async () => {
   app.use('/api/news',         newsRoutes);
   app.use('/api/achievements', achievementsRoutes);
   console.log('Routes registered');
+  
+  // ── HEALTH CHECK ─────────────────────────────────────────────
+  app.get('/health', (_req, res) => {
+    res.json({ 
+      status: 'ok', 
+      timestamp: new Date().toISOString(),
+      version: '1.0.0'
+    });
+  });
+
+  // ── NOT FOUND ────────────────────────────────────────────────
+  app.use((_req, res) => {
+    res.status(404).json({ error: 'Not found' });
+  });
+
+  app.listen(PORT, () => {
+    console.log(`i-NEXT API running on port ${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  });
 };
 
-await loadRoutes();
-
-// ── HEALTH CHECK ─────────────────────────────────────────────
-app.get('/health', (_req, res) => {
-  res.json({ 
-    status: 'ok', 
-    timestamp: new Date().toISOString(),
-    version: '1.0.0'
-  });
-});
-
-// ── NOT FOUND ────────────────────────────────────────────────
-app.use((_req, res) => {
-  res.status(404).json({ error: 'Not found' });
-});
-
-app.listen(PORT, () => {
-  console.log(`i-NEXT API running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-});
+loadRoutes().catch(console.error);
 
 export default app;
