@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { prisma } from '../lib/db';
-import { requireAuth } from '../lib/auth';
+import { prisma } from '../lib/db.js';
+import { requireAuth } from '../lib/auth.js';
 import path from 'path';
 import fs from 'fs';
 

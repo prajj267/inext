@@ -1,6 +1,7 @@
 {
   "name": "inext-api",
   "version": "1.0.0",
+  "type": "module",
   "description": "Express API backend for i-NEXT Research Lab website",
   "main": "dist/index.js",
   "scripts": {

@@ -4,12 +4,12 @@ import cors from 'cors';
 import path from 'path';
 import multer from 'multer';
 
-import authRoutes        from './routes/auth';
-import membersRoutes     from './routes/members';
-import publicationsRoutes from './routes/publications';
-import projectsRoutes    from './routes/projects';
-import newsRoutes        from './routes/news';
-import achievementsRoutes from './routes/achievements';
+import authRoutes        from './routes/auth.js';
+import membersRoutes     from './routes/members.js';
+import publicationsRoutes from './routes/publications.js';
+import projectsRoutes    from './routes/projects.js';
+import newsRoutes        from './routes/news.js';
+import achievementsRoutes from './routes/achievements.js';
 
 const app  = express();
 const PORT = process.env.PORT ?? 4000;
