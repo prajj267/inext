@@ -64,6 +64,7 @@ app.use((_req, res) => {
 
 app.listen(PORT, () => {
   console.log(`i-NEXT API running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
 
 export default app;
