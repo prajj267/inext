@@ -4,13 +4,6 @@ import cors from 'cors';
 import path from 'path';
 import multer from 'multer';
 
-import authRoutes        from './routes/auth.js';
-import membersRoutes     from './routes/members.js';
-import publicationsRoutes from './routes/publications.js';
-import projectsRoutes    from './routes/projects.js';
-import newsRoutes        from './routes/news.js';
-import achievementsRoutes from './routes/achievements.js';
-
 const app  = express();
 const PORT = process.env.PORT ?? 4000;
 
@@ -50,13 +43,25 @@ app.get('/api/test', (_req, res) => {
   res.json({ message: 'Routing works!' });
 });
 
-app.use('/api/auth',         authRoutes);
-app.use('/api/members',      membersRoutes);
-app.use('/api/publications', publicationsRoutes);
-app.use('/api/projects',     projectsRoutes);
-app.use('/api/news',         newsRoutes);
-app.use('/api/achievements', achievementsRoutes);
-console.log('Routes registered');
+// Import and register routes dynamically
+const loadRoutes = async () => {
+  const authRoutes        = (await import('./routes/auth.js')).default;
+  const membersRoutes     = (await import('./routes/members.js')).default;
+  const publicationsRoutes = (await import('./routes/publications.js')).default;
+  const projectsRoutes    = (await import('./routes/projects.js')).default;
+  const newsRoutes        = (await import('./routes/news.js')).default;
+  const achievementsRoutes = (await import('./routes/achievements.js')).default;
+  
+  app.use('/api/auth',         authRoutes);
+  app.use('/api/members',      membersRoutes);
+  app.use('/api/publications', publicationsRoutes);
+  app.use('/api/projects',     projectsRoutes);
+  app.use('/api/news',         newsRoutes);
+  app.use('/api/achievements', achievementsRoutes);
+  console.log('Routes registered');
+};
+
+await loadRoutes();
 
 // ── HEALTH CHECK ─────────────────────────────────────────────
 app.get('/health', (_req, res) => {
