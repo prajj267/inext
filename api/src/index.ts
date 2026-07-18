@@ -56,7 +56,11 @@ console.log('Routes registered');
 
 // ── HEALTH CHECK ─────────────────────────────────────────────
 app.get('/health', (_req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  res.json({ 
+    status: 'ok', 
+    timestamp: new Date().toISOString(),
+    version: '1.0.0'
+  });
 });
 
 // ── NOT FOUND ────────────────────────────────────────────────
