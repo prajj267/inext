@@ -44,8 +44,12 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 // ── ROUTES ───────────────────────────────────────────────────
 console.log('Registering routes...');
-console.log('authRoutes type:', typeof authRoutes, authRoutes);
-console.log('membersRoutes type:', typeof membersRoutes, membersRoutes);
+
+// Test route to verify routing works
+app.get('/api/test', (_req, res) => {
+  res.json({ message: 'Routing works!' });
+});
+
 app.use('/api/auth',         authRoutes);
 app.use('/api/members',      membersRoutes);
 app.use('/api/publications', publicationsRoutes);
