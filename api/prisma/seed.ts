@@ -197,7 +197,8 @@ async function main() {
     // ── Journals ─────────────────────────────────────────────────
     { title: 'CuPric: Customer Segment-Based Pricing in Mobile Sensors-As-a-Service',
       year: 2025, pubType: 'Journal', venue: 'IEEE Transactions on Services Computing',
-      authors: [AR] },
+      authors: [AR],
+      pdfPath: '/pdfs/CuPric_2025.pdf' },
     { title: 'OCUS: A Game-Theoretic Approach to Optimal UAV Coalitions in UAV-as-a-Service Platforms',
       year: 2025, pubType: 'Journal', venue: 'Ad Hoc Networks (Elsevier)',
       authors: [AR] },
