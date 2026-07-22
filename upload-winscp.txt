@@ -1,0 +1,35 @@
+# WinSCP Setup Instructions
+
+1. Download WinSCP: https://winscp.net/eng/download.php
+2. Install and open WinSCP
+3. Click "New Session"
+4. Fill in these details:
+
+   File protocol: SFTP
+   Host name: 172.16.1.251
+   Port: 22
+   User name: [ASK YOUR SERVER ADMIN - ppraj/inext didn't work]
+   Password: [YOUR PASSWORD]
+
+5. Click "Login"
+6. Navigate to the website directory (probably ~/public_html or /var/www/html)
+7. Upload all files from: C:\Projects\website iit\inext-website\out\
+
+---
+
+# Contact Your Server Admin
+
+Since authentication is failing, you need to ask your IIT server administrator:
+
+1. What is the correct SSH username?
+2. What is the correct password?
+3. What is the path to upload files? (e.g., ~/public_html)
+4. Do they require SSH key authentication instead of password?
+
+Common usernames to try:
+- inext
+- ppraj  
+- arijitroy
+- your IIT email prefix
+- website
+- www-data

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API URL Checker - i-NEXT</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; }
+        .status { font-weight: bold; padding: 10px; border-radius: 4px; margin: 10px 0; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 4px; overflow-x: auto; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>🔍 i-NEXT API URL Checker</h1>
+    
+    <div class="box">
+        <h2>Current Configuration</h2>
+        <div id="config"></div>
+    </div>
+
+    <div class="box">
+        <h2>API Connection Test</h2>
+        <button onclick="testAPI()">Test API Connection</button>
+        <div id="result"></div>
+    </div>
+
+    <div class="box">
+        <h2>What to Check</h2>
+        <ol>
+            <li>The frontend should use: <code>https://inext-production.up.railway.app</code></li>
+            <li>If it shows a different URL, you need to rebuild with the correct .env</li>
+            <li>Test the API connection above to see if data loads</li>
+        </ol>
+    </div>
+
+    <script>
+        // This simulates what your actual frontend does
+        const API_URL = 'http://localhost:4000'; // Default fallback
+        // In production, this would be replaced by Next.js build with NEXT_PUBLIC_API_URL
+
+        document.getElementById('config').innerHTML = `
+            <p><strong>API URL:</strong> <code>${API_URL}</code></p>
+            <p class="info">ℹ️ This is the fallback URL. Your built frontend might have a different URL baked in.</p>
+            <p>To check the actual URL in your deployed site:</p>
+            <ol>
+                <li>Open https://inext.iitp.ac.in/members/</li>
+                <li>Press F12 (Developer Tools)</li>
+                <li>Go to Network tab</li>
+                <li>Refresh the page</li>
+                <li>Look for a request to "/api/members"</li>
+                <li>Check what domain it's calling</li>
+            </ol>
+        `;
+
+        async function testAPI() {
+            const testUrls = [
+                'https://inext-production.up.railway.app',
+                'https://inext-production-up.railway.app',  // Wrong URL (missing dot)
+                'http://localhost:4000'
+            ];
+
+            let results = '<h3>Testing all possible API URLs:</h3>';
+
+            for (const url of testUrls) {
+                results += `<p>Testing <code>${url}</code>...</p>`;
+                try {
+                    const response = await fetch(`${url}/api/members`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        results += `<div class="status success">✅ SUCCESS! Found ${data.length} members</div>`;
+                        results += `<p><strong>This is the correct URL!</strong></p>`;
+                    } else {
+                        results += `<div class="status error">❌ Failed: HTTP ${response.status}</div>`;
+                    }
+                } catch (error) {
+                    results += `<div class="status error">❌ Error: ${error.message}</div>`;
+                }
+            }
+
+            document.getElementById('result').innerHTML = results;
+        }
+
+        // Auto-test on load
+        window.addEventListener('load', () => {
+            setTimeout(testAPI, 500);
+        });
+    </script>
+</body>
+</html>

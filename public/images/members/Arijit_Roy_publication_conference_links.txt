@@ -1,0 +1,184 @@
+Arijit Roy CV - Publication and Conference Paper Links
+Source CV dated 15-06-2026
+
+JOURNAL PAPERS (36)
+================================================================================
+[J1] OPUS: Optimal Pricing for UAV-as-a-Service using Bargaining Game
+https://ieeexplore.ieee.org/document/11268908/
+
+[J2] Co-Task: Collaborative Task Execution for UAV-as-a-Service using Stackelberg Game
+https://www.sciencedirect.com/science/article/pii/S1570870525003476
+
+[J3] CuPric: Customer Segment-Based Pricing in Mobile Sensors-As-a-Service
+https://ieeexplore.ieee.org/abstract/document/11184879
+
+[J4] OCUS: A Game-Theoretic Approach to Optimal UAV Coalitions in UAV-as-a-Service Platforms
+https://www.sciencedirect.com/science/article/pii/S1570870525002781
+
+[J5] MitiCon: Mitigating Model Contamination in Distributed Machine Learning for UAV-as-a-Service
+https://ieeexplore.ieee.org/abstract/document/11165136
+
+[J6] TOFU: Trust-based Task Offloading in UAV-as-a-Service
+https://ieeexplore.ieee.org/abstract/document/11145885
+
+[J7] Fog-enabled UAV-as-a-Service for Aerial Image Classification
+https://www.sciencedirect.com/science/article/pii/S221053792500054X
+
+[J8] Con-Fog: Consensus-driven Fog Node Selection in FU-Serve Platform for IoT Applications
+https://ieeexplore.ieee.org/document/10949608
+
+[J9] Serv-HU: Service Hand-off for UAV-as-a-Service
+https://ieeexplore.ieee.org/abstract/document/10814719
+
+[J10] PCAM: Optimal Pricing Scheme for Rendering Camera-Network-as-a-Service
+https://ieeexplore.ieee.org/abstract/document/10308612
+
+[J11] i-AVR: IoT-based Ambulatory Vitals Monitoring and Recommender System
+https://ieeexplore.ieee.org/document/10026876
+
+[J12] I2M: Intelligent Information Management for Rendering IoE Services in Society 5.0
+https://ieeexplore.ieee.org/document/9779650
+
+[J13] B2H: Enabling Delay-Tolerant Blockchain Network in Healthcare for Society 5.0
+https://www.sciencedirect.com/science/article/pii/S1389128622000706
+
+[J14] Softwarized Management of 6G Network for Green Internet of Things
+https://www.sciencedirect.com/science/article/pii/S0140366422000329
+
+[J15] Edge Intelligence for Rendering Green Camera-Network-as-a-Service
+https://ieeexplore.ieee.org/document/9606213/
+
+[J16] AI-based Communication-as-a-Service for Network Management in Society 5.0
+https://ieeexplore.ieee.org/document/9569743
+
+[J17] CASE: Context-Aware Security Scheme for Preserving Data Privacy in IoT-enabled Society 5.0
+https://ieeexplore.ieee.org/abstract/document/9501039
+
+[J18] Mobile Sensor-Cloud for Rendering Sensors-as-a-Service
+https://ieeexplore.ieee.org/abstract/document/9482601
+
+[J19] DEFT: Decentralized Multiuser Computation Offloading in a Fog-Enabled IoV Environment
+https://ieeexplore.ieee.org/document/9266123
+
+[J20] Blockchain at the Edge: Performance of Resource-Constrained IoT Networks
+https://ieeexplore.ieee.org/document/9158540
+
+[J21] Range-Price Trade-off in Sensor-cloud for Provisioning Sensors-as-a-Service
+https://ieeexplore.ieee.org/document/9222319
+
+[J22] PRIME: An Optimal Pricing Scheme for Mobile Sensors-as-a-Service
+https://ieeexplore.ieee.org/document/9195797
+
+[J23] DROPS: Dynamic Radio Protocol Selection for Energy-Constrained Wearable IoT Healthcare
+https://ieeexplore.ieee.org/document/9181524
+
+[J24] UAV Virtualization for Enabling Heterogeneous and Persistent UAV-as-a-Service
+https://ieeexplore.ieee.org/document/9072443
+
+[J25] ORCID: Opportunistic Re-Connectivity for Network Management in the Presence of Dumb Nodes in Wireless Sensor Networks
+https://ieeexplore.ieee.org/document/8935523
+
+[J26] Dynamic Pricing for Sensor-Cloud Platform in the Presence of Dumb Nodes
+https://ieeexplore.ieee.org/document/8887200
+
+[J27] MEGAN: Multipurpose Energy-Efficient, Adaptable, and Low-Cost Wireless Sensor Node for the Internet of Things
+https://ieeexplore.ieee.org/document/8743432
+
+[J28] Big-Sensor-Cloud Infrastructure: A Holistic Prototype for Provisioning Sensors-as-a-Service
+https://ieeexplore.ieee.org/document/8680690
+
+[J29] Dynamic Trust Enforcing Pricing Scheme for Sensors-as-a-Service in Sensor-Cloud Infrastructure
+https://ieeexplore.ieee.org/document/8481588
+
+[J30] Knowledge Discovery for Enabling Smart Internet of Things: A Survey
+https://wires.onlinelibrary.wiley.com/doi/10.1002/widm.1276
+
+[J31] Safe-aaS: Decision Virtualization for Effecting Safety-as-a-Service
+https://ieeexplore.ieee.org/document/8305454
+
+[J32] Topology Control for Self-Adaptation in Wireless Sensor Networks with Temporary Connection Impairment
+https://dl.acm.org/doi/10.1145/2979680
+
+[J33] On the Effects of Communication Range Shrinkage of Sensor Nodes in Mobile Wireless Sensor Networks Due to Adverse Environmental Conditions
+https://ieeexplore.ieee.org/document/7572950
+
+[J34] Connectivity Re-establishment in Self-organizing Sensor Networks with Dumb Nodes
+https://dl.acm.org/doi/10.1145/2816820
+
+[J35] D3: Distributed Approach for the Detection of Dumb Nodes in Wireless Sensor Networks
+https://onlinelibrary.wiley.com/doi/10.1002/dac.2913
+
+[J36] Existence of Dumb Nodes in Stationary Wireless Sensor Networks
+https://www.sciencedirect.com/science/article/pii/S0164121214000120
+
+CONFERENCE PAPERS (23)
+================================================================================
+[C1] HFSDN: Hierarchical Federated Learning Based SDN Architecture for Fault-Tolerance
+https://pimrc2026.ieee-pimrc.org/
+Note: Conference page; the paper is accepted for PIMRC 2026 but no IEEE Xplore paper page was found as of 17 July 2026.
+
+[C2] DESTIN: Dynamic Device Selection for Mobile Sensors-as-a-Service Platforms
+https://ieeexplore.ieee.org/document/11555178
+
+[C3] LISKI: A Lightweight Secret Key Generation Scheme for Resource-Constrained IoT Devices
+https://ieeexplore.ieee.org/document/11555752
+
+[C4] VisionStack: Multi-Layered Object Detection and Classification Framework
+https://ieeexplore.ieee.org/document/11430018
+
+[C5] FU-Serve: Fog-enabled UAV-as-a-Service for IoT Applications
+https://ieeexplore.ieee.org/document/10437547
+
+[C6] FoMS: Fog-enabled Mobile Sensor Virtualization Architecture for IoT Applications
+https://ieeexplore.ieee.org/document/10437642
+
+[C7] Programming Edge-based 6TiSCH Networks for Control-Loop Communication
+https://ieeexplore.ieee.org/document/10437380
+
+[C8] Opti-U: Optimal UAV Selection for Enabling UAV-as-a-Service
+https://ieeexplore.ieee.org/document/9839188
+
+[C9] ServEx: Service Exchange Among Multiple SCSPs in Sensor-Cloud for IoT Applications
+https://ieeexplore.ieee.org/document/9685915
+
+[C10] SDN-Based Link Recovery Scheme for Large-Scale Internet of Things
+https://ieeexplore.ieee.org/document/9481842
+
+[C11] QoI-Aware Camera Network-as-a-Service for Social Behavior Analysis
+https://ieeexplore.ieee.org/document/9500453
+
+[C12] Programmable IEEE 802.11ah Network for Internet of Things
+https://ieeexplore.ieee.org/document/9500610
+
+[C13] Activity-Aware Data Rate Tuning in Wireless Body Area Networks
+https://ieeexplore.ieee.org/document/9322244/
+
+[C14] OptiCam: Optimal Camera Selection for Provisioning Camera-Network-as-a-Service
+https://ieeexplore.ieee.org/document/9348228
+
+[C15] QSens: QoS-aware Sensor Node Selection in Sensor-Cloud Architecture
+https://link.springer.com/chapter/10.1007/978-981-33-4299-6_44
+
+[C16] OPTIVE: Optimal Configuration of Virtual Sensor in Mobile Sensor-cloud
+https://ieeexplore.ieee.org/document/8885626
+
+[C17] CARE: Criticality-Aware Data Transmission in CPS-based Healthcare Systems
+https://ieeexplore.ieee.org/document/8403540
+
+[C18] DIVISOR: Dynamic Virtual Sensor Formation for Overlapping Region in IoT-based Sensor-Cloud
+https://ieeexplore.ieee.org/document/8377221
+
+[C19] QoS-Aware Dynamic Caching for Destroyed Virtual Machines in Sensor-Cloud Architecture
+https://dl.acm.org/doi/10.1145/3154273.3154341
+
+[C20] AID: A Prototype for Agricultural Intrusion Detection Using Wireless Sensor Network
+https://ieeexplore.ieee.org/document/7249452
+
+[C21] Energy-Efficient Topology Reconstruction of WSN in Presence of Dumb Nodes
+https://ieeexplore.ieee.org/document/7247389
+
+[C22] Detection of Dumb Nodes in a Stationary Wireless Sensor Network
+https://ieeexplore.ieee.org/document/7030668
+
+[C23] Connectivity Re-establishment in the Presence of Dumb Nodes in Sensor-Cloud Infrastructure: A Game-Theoretic Approach
+https://ieeexplore.ieee.org/document/7037772
