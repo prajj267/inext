@@ -64,7 +64,6 @@ async function main() {
       focus: 'AI, UAV, IoT, Machine Learning',
       photo: '/images/members/karan_yadav.jpeg',
       links: [
-        { label: 'Email', href: 'mailto:karan.yadav@iitp.ac.in' },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/karanydv/' }
       ] },
     {
@@ -72,7 +71,6 @@ async function main() {
       focus: 'Computer Networks, UAV-Assisted Wireless Communications, 5G/6G Networks',
       photo: '/images/members/PHD/abhishek.jpeg',
       links: [
-        { label: 'Email', href: 'mailto:abhishek@iitp.ac.in' },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abhishek-pandey-545157230/' }
       ],
     },
@@ -81,7 +79,6 @@ async function main() {
       focus: 'IoT, Quantum IoT, and UAV Systems',
       photo: '/images/members/PHD/rudra.jpeg',
       links: [
-        { label: 'Email', href: 'mailto:rudra@iitp.ac.in' },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/rudra-pratap-singh-a87024213' }
       ],
     },
@@ -90,7 +87,6 @@ async function main() {
       focus: 'IoT, UAVs, Game Theory, Distributed Machine Learning',
       photo: '/images/members/PHD/prince.jpg',
       links: [
-        { label: 'Email', href: 'mailto:prince@iitp.ac.in' },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/prince80/' }
       ],
     },
