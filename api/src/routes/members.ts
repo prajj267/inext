@@ -1,8 +1,6 @@
 import { Router } from 'express';
 import { prisma } from '../lib/db.js';
 import { requireAuth } from '../lib/auth.js';
-import path from 'path';
-import fs from 'fs';
 
 const router = Router();
 
@@ -55,16 +53,22 @@ router.delete('/:id', requireAuth, async (req, res) => {
   } catch { res.status(500).json({ error: 'Server error' }); }
 });
 
-// POST /api/members/upload-photo — upload member photo
+// POST /api/members/upload-photo — upload member photo (store as base64 in database)
 router.post('/upload-photo', requireAuth, async (req, res) => {
   try {
     if (!req.file) { res.status(400).json({ error: 'No file uploaded' }); return; }
-    const uploadDir = path.join(process.cwd(), 'uploads', 'members');
-    fs.mkdirSync(uploadDir, { recursive: true });
-    const filename = req.file.originalname.replace(/[^a-zA-Z0-9._-]/g, '_');
-    fs.writeFileSync(path.join(uploadDir, filename), req.file.buffer);
-    res.json({ path: `/uploads/members/${filename}` });
-  } catch { res.status(500).json({ error: 'Upload failed' }); }
+    
+    // Convert image to base64
+    const base64 = req.file.buffer.toString('base64');
+    const mimeType = req.file.mimetype || 'image/jpeg';
+    const dataUrl = `data:${mimeType};base64,${base64}`;
+    
+    // Return the data URL to be stored in the member's photo field
+    res.json({ path: dataUrl });
+  } catch (err) { 
+    console.error('Upload error:', err);
+    res.status(500).json({ error: 'Upload failed' }); 
+  }
 });
 
 export default router;
