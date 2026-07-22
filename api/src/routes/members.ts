@@ -35,6 +35,9 @@ router.post('/', requireAuth, async (req, res) => {
 router.put('/:id', requireAuth, async (req, res) => {
   try {
     const { links, ...data } = req.body;
+    console.log('Updating member:', req.params.id, 'with data:', JSON.stringify(data, null, 2));
+    console.log('Links:', JSON.stringify(links, null, 2));
+    
     await prisma.memberLink.deleteMany({ where: { memberId: req.params.id } });
     const member = await prisma.member.update({
       where: { id: req.params.id },
@@ -42,7 +45,10 @@ router.put('/:id', requireAuth, async (req, res) => {
       include: { links: true },
     });
     res.json(member);
-  } catch { res.status(500).json({ error: 'Server error' }); }
+  } catch (err) { 
+    console.error('Error updating member:', err);
+    res.status(500).json({ error: 'Server error', details: err instanceof Error ? err.message : String(err) }); 
+  }
 });
 
 // DELETE /api/members/:id
