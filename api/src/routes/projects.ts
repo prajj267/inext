@@ -7,7 +7,7 @@ const router = Router();
 // GET /api/projects
 router.get('/', async (_req, res) => {
   try {
-    const projects = await prisma.project.findMany({ orderBy: { createdAt: 'asc' } });
+    const projects = await prisma.project.findMany({ orderBy: { order: 'asc' } });
     res.json(projects);
   } catch { res.status(500).json({ error: 'Server error' }); }
 });
