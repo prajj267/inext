@@ -14,6 +14,7 @@ const allowedOrigins = [
   'http://localhost:3001',
   'http://localhost:8000',  // local testing with http-server
   'http://127.0.0.1:8000',  // local testing with http-server (IP)
+  'http://192.173.0.64:8000',  // local network testing
 ];
 
 app.use(cors({
