@@ -34,11 +34,10 @@ router.post('/', requireAuth, async (req, res) => {
 // PUT /api/members/:id
 router.put('/:id', requireAuth, async (req, res) => {
   try {
-    const { links, ...data } = req.body;
+    const { links, id, createdAt, updatedAt, linksText, ...data } = req.body;
     console.log('=== UPDATE MEMBER REQUEST ===');
     console.log('Member ID:', req.params.id);
-    console.log('Data keys:', Object.keys(data));
-    console.log('Data:', JSON.stringify(data, null, 2));
+    console.log('Filtered data:', JSON.stringify(data, null, 2));
     console.log('Links:', JSON.stringify(links, null, 2));
     console.log('============================');
     
@@ -59,12 +58,10 @@ router.put('/:id', requireAuth, async (req, res) => {
     console.error('!!! ERROR UPDATING MEMBER !!!');
     console.error('Error type:', err instanceof Error ? err.constructor.name : typeof err);
     console.error('Error message:', err instanceof Error ? err.message : String(err));
-    console.error('Full error:', err);
     
     res.status(500).json({ 
       error: 'Server error', 
-      details: err instanceof Error ? err.message : String(err),
-      stack: err instanceof Error ? err.stack : undefined
+      details: err instanceof Error ? err.message : String(err)
     }); 
   }
 });
