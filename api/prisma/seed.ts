@@ -63,24 +63,36 @@ async function main() {
     { name: 'Karan Yadav',     role: 'M.Tech', category: MemberCategory.MASTERS, order: 0,
       focus: 'AI, UAV, IoT, Machine Learning',
       photo: '/images/members/karan_yadav.jpeg',
-      links: [{ label: 'Email', href: 'mailto:karan.yadav@iitp.ac.in' }] },
+      links: [
+        { label: 'Email', href: 'mailto:karan.yadav@iitp.ac.in' },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/karanydv/' }
+      ] },
     {
       name: 'Abhishek Kumar Pandey', role: 'PhD', category: MemberCategory.PHD, order: 0,
       focus: 'Computer Networks, UAV-Assisted Wireless Communications, 5G/6G Networks',
       photo: '/images/members/PHD/abhishek.jpeg',
-      links: [{ label: 'Email', href: 'mailto:abhishek@iitp.ac.in' }],
+      links: [
+        { label: 'Email', href: 'mailto:abhishek@iitp.ac.in' },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abhishek-pandey-545157230/' }
+      ],
     },
     {
       name: 'Rudra Pratap Singh', role: 'PhD', category: MemberCategory.PHD, order: 1,
       focus: 'IoT, Quantum IoT, and UAV Systems',
       photo: '/images/members/PHD/rudra.jpeg',
-      links: [{ label: 'Email', href: 'mailto:rudra@iitp.ac.in' }],
+      links: [
+        { label: 'Email', href: 'mailto:rudra@iitp.ac.in' },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/rudra-pratap-singh-a87024213' }
+      ],
     },
     {
       name: 'Prince Kumar', role: 'PhD', category: MemberCategory.PHD, order: 2,
       focus: 'IoT, UAVs, Game Theory, Distributed Machine Learning',
       photo: '/images/members/PHD/prince.jpg',
-      links: [{ label: 'Email', href: 'mailto:prince@iitp.ac.in' }],
+      links: [
+        { label: 'Email', href: 'mailto:prince@iitp.ac.in' },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/prince80/' }
+      ],
     },
     { name: 'Deepanker Jauhari',     role: 'B.Tech', category: MemberCategory.UNDERGRAD, order: 0,
       focus: 'Roll No: 2101CS23 · Batch: 2021–2025',
