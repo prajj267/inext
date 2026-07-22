@@ -35,19 +35,37 @@ router.post('/', requireAuth, async (req, res) => {
 router.put('/:id', requireAuth, async (req, res) => {
   try {
     const { links, ...data } = req.body;
-    console.log('Updating member:', req.params.id, 'with data:', JSON.stringify(data, null, 2));
+    console.log('=== UPDATE MEMBER REQUEST ===');
+    console.log('Member ID:', req.params.id);
+    console.log('Data keys:', Object.keys(data));
+    console.log('Data:', JSON.stringify(data, null, 2));
     console.log('Links:', JSON.stringify(links, null, 2));
+    console.log('============================');
     
-    await prisma.memberLink.deleteMany({ where: { memberId: req.params.id } });
+    // First, delete existing links
+    const deletedCount = await prisma.memberLink.deleteMany({ where: { memberId: req.params.id } });
+    console.log('Deleted', deletedCount.count, 'existing links');
+    
+    // Then update the member
     const member = await prisma.member.update({
       where: { id: req.params.id },
       data: { ...data, links: { create: links ?? [] } },
       include: { links: true },
     });
+    
+    console.log('Member updated successfully');
     res.json(member);
   } catch (err) { 
-    console.error('Error updating member:', err);
-    res.status(500).json({ error: 'Server error', details: err instanceof Error ? err.message : String(err) }); 
+    console.error('!!! ERROR UPDATING MEMBER !!!');
+    console.error('Error type:', err instanceof Error ? err.constructor.name : typeof err);
+    console.error('Error message:', err instanceof Error ? err.message : String(err));
+    console.error('Full error:', err);
+    
+    res.status(500).json({ 
+      error: 'Server error', 
+      details: err instanceof Error ? err.message : String(err),
+      stack: err instanceof Error ? err.stack : undefined
+    }); 
   }
 });
 
