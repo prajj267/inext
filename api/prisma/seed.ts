@@ -66,6 +66,12 @@ async function main() {
       links: [
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/karanydv/' }
       ] },
+    { name: 'Mudita Gamre',    role: 'M.Tech', category: MemberCategory.MASTERS, order: 1,
+      focus: 'IoT, Agentic AI, Large Language Models (LLM)',
+      photo: '/images/members/mundita.jpeg',
+      links: [
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mudita-gamre-2b3515216/' }
+      ] },
     {
       name: 'Abhishek Kumar Pandey', role: 'PhD', category: MemberCategory.PHD, order: 0,
       focus: 'Computer Networks, UAV-Assisted Wireless Communications, 5G/6G Networks',
