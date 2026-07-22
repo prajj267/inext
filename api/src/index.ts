@@ -54,6 +54,7 @@ const loadRoutes = async () => {
   const projectsRoutes    = (await import('./routes/projects.js')).default;
   const newsRoutes        = (await import('./routes/news.js')).default;
   const achievementsRoutes = (await import('./routes/achievements.js')).default;
+  const slidesRoutes      = (await import('./routes/slides.js')).default;
   
   app.use('/api/auth',         authRoutes);
   app.use('/api/members',      membersRoutes);
@@ -61,6 +62,7 @@ const loadRoutes = async () => {
   app.use('/api/projects',     projectsRoutes);
   app.use('/api/news',         newsRoutes);
   app.use('/api/achievements', achievementsRoutes);
+  app.use('/api/slides',       slidesRoutes);
   console.log('Routes registered');
   
   // ── HEALTH CHECK ─────────────────────────────────────────────
