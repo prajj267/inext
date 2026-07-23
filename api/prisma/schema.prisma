@@ -16,16 +16,20 @@ model AdminUser {
 
 // ─── Members ─────────────────────────────────────────────────
 model Member {
-  id        String         @id @default(cuid())
-  name      String
-  role      String
-  category  MemberCategory
-  focus     String
-  photo     String?
-  order     Int            @default(0)
-  links     MemberLink[]
-  createdAt DateTime       @default(now())
-  updatedAt DateTime       @updatedAt
+  id              String         @id @default(cuid())
+  name            String
+  role            String?        // Optional - can be empty
+  category        MemberCategory
+  focus           String
+  photo           String?
+  order           Int            @default(0)
+  // Alumni-specific fields
+  organization    String?        // For alumni: current organization
+  thesisTitle     String?        // For alumni: thesis title
+  batch           String?        // For alumni: e.g., "2015-2019"
+  links           MemberLink[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 }
 
 model MemberLink {
