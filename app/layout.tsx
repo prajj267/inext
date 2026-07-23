@@ -5,14 +5,11 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: {
-    default: 'i-NEXT',
-    template: 'i-NEXT | %s',
+    default: 'iNEXT',
+    template: 'iNEXT | %s',
   },
   description:
-    'i-NEXT Research Lab at IIT Patna, led by Dr. Arijit Roy, focuses on Internet of Things (IoT), UAV Networks, Sensor-Cloud, and AI-driven systems for healthcare and agriculture.',
-  icons: {
-    icon: '/images/favicon/ChatGPT Image Jul 22, 2026, 11_31_29 AM.png',
-  },
+    'iNEXT Research Lab at IIT Patna, led by Dr. Arijit Roy, focuses on Internet of Things (IoT), UAV Networks, Sensor-Cloud, and AI-driven systems for healthcare and agriculture.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

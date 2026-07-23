@@ -31,7 +31,6 @@ export default function PublicationsPage() {
       <div className="page-banner">
         <div className="container">
           <h1>Publications</h1>
-          <p>{journals.length} journal papers &nbsp;·&nbsp; {conferences.length} conference papers</p>
         </div>
       </div>
 
@@ -45,7 +44,6 @@ export default function PublicationsPage() {
               <section aria-labelledby="journals-heading" style={{ marginBottom: '3rem' }}>
                 <h2 className="pub-type-heading" id="journals-heading">
                   Journal Papers
-                  <span className="pub-type-count">{journals.length}</span>
                 </h2>
                 {groupByYear(journals).map(({ year, entries }) => (
                   <div key={year} className="pub-year-group">
@@ -63,7 +61,6 @@ export default function PublicationsPage() {
               <section aria-labelledby="conferences-heading">
                 <h2 className="pub-type-heading" id="conferences-heading">
                   Conference Papers
-                  <span className="pub-type-count">{conferences.length}</span>
                 </h2>
                 {groupByYear(conferences).map(({ year, entries }) => (
                   <div key={year} className="pub-year-group">

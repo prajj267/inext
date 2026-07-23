@@ -6,7 +6,7 @@ import { adminFetch, API_URL, getToken } from '@/lib/api';
 
 interface Stats {
   members: number; publications: number; projects: number;
-  news: number; achievements: number;
+  news: number; achievements: number; slides: number;
 }
 
 export default function AdminDashboard() {
@@ -19,13 +19,15 @@ export default function AdminDashboard() {
       fetch(`${API_URL}/api/projects`).then(r => r.json()),
       fetch(`${API_URL}/api/news`).then(r => r.json()),
       fetch(`${API_URL}/api/achievements`).then(r => r.json()),
-    ]).then(([members, publications, projects, news, achievements]) => {
+      fetch(`${API_URL}/api/slides`).then(r => r.json()),
+    ]).then(([members, publications, projects, news, achievements, slides]) => {
       setStats({
         members:      Array.isArray(members)      ? members.length      : 0,
         publications: Array.isArray(publications) ? publications.length : 0,
         projects:     Array.isArray(projects)     ? projects.length     : 0,
         news:         Array.isArray(news)         ? news.length         : 0,
         achievements: Array.isArray(achievements) ? achievements.length : 0,
+        slides:       Array.isArray(slides)       ? slides.length       : 0,
       });
     }).catch(console.error);
   }, []);
@@ -36,6 +38,7 @@ export default function AdminDashboard() {
     { label: 'Projects',     count: stats?.projects,     href: '/admin/projects' },
     { label: 'News Items',   count: stats?.news,         href: '/admin/news' },
     { label: 'Achievements', count: stats?.achievements, href: '/admin/achievements' },
+    { label: 'Hero Slides',  count: stats?.slides,       href: '/admin/slides' },
   ];
 
   return (

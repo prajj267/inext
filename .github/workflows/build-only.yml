@@ -1,0 +1,63 @@
+name: Build Frontend (Manual Deploy)
+
+on:
+  # Trigger on push to develop branch or manual trigger
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Create .env file
+        run: |
+          echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" > .env
+      
+      - name: Build Next.js site
+        run: npm run build
+      
+      - name: Create deployment ZIP
+        run: |
+          cd out
+          zip -r ../inext-frontend-deploy.zip .
+          cd ..
+      
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: inext-frontend-deploy
+          path: inext-frontend-deploy.zip
+          retention-days: 30
+      
+      - name: Build Summary
+        run: |
+          echo "## ✅ Build Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Download the deployment package from the Artifacts section above." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Deploy to IIT Server:" >> $GITHUB_STEP_SUMMARY
+          echo '```bash' >> $GITHUB_STEP_SUMMARY
+          echo "scp inext-frontend-deploy.zip inext@172.16.1.251:~/" >> $GITHUB_STEP_SUMMARY
+          echo "ssh inext@172.16.1.251" >> $GITHUB_STEP_SUMMARY
+          echo "cd ~/public_html && rm -rf *" >> $GITHUB_STEP_SUMMARY
+          echo "unzip ~/inext-frontend-deploy.zip" >> $GITHUB_STEP_SUMMARY
+          echo "find . -type d -exec chmod 755 {} \;" >> $GITHUB_STEP_SUMMARY
+          echo "find . -type f -exec chmod 644 {} \;" >> $GITHUB_STEP_SUMMARY
+          echo "chmod -R 755 _next/" >> $GITHUB_STEP_SUMMARY
+          echo "rm ~/inext-frontend-deploy.zip" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY

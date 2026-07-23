@@ -27,8 +27,29 @@ export default function MemberCard({ member }: Props) {
       )}
 
       <h3>{member.name}</h3>
-      <p className="member-role">{member.role}</p>
+      
+      {/* Show role only if it exists */}
+      {member.role && <p className="member-role">{member.role}</p>}
+      
+      {/* Show focus */}
       <p className="member-focus">{member.focus}</p>
+      
+      {/* Show optional fields if they exist */}
+      {member.organization && (
+        <p className="member-organization">
+          <strong>Organization:</strong> {member.organization}
+        </p>
+      )}
+      {member.thesisTitle && (
+        <p className="member-thesis">
+          <strong>Thesis Title:</strong> {member.thesisTitle}
+        </p>
+      )}
+      {member.batch && (
+        <p className="member-batch">
+          <strong>Batch:</strong> {member.batch}
+        </p>
+      )}
 
       {member.links.length > 0 && (
         <div className="member-links">

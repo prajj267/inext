@@ -33,7 +33,8 @@ export default function PhotoUploader({ currentPhoto, onUpload }: Props) {
       });
       if (!res.ok) throw new Error('Upload failed');
       const { path } = await res.json();
-      const fullUrl = `${API_URL}${path}`;
+      // If path is already a data URL (base64), use it directly. Otherwise prepend API_URL
+      const fullUrl = path.startsWith('data:') ? path : `${API_URL}${path}`;
       setManualUrl(fullUrl);
       onUpload(fullUrl);
       setStatus('done');

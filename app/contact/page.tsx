@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Contact information, address, and directions for i-NEXT at IIT Patna.',
+  description: 'Contact information, address, and directions for iNEXT at IIT Patna.',
 };
 
 export default function ContactPage() {
@@ -12,7 +12,6 @@ export default function ContactPage() {
       <div className="page-banner">
         <div className="container">
           <h1>Contact Us</h1>
-          <p>Reach out for research collaborations, student inquiries, or general information.</p>
         </div>
       </div>
 
@@ -24,7 +23,7 @@ export default function ContactPage() {
             <div className="contact-info">
               <h2>Lab Address</h2>
               <address>
-                <strong>i-NEXT Research Lab</strong><br />
+                <strong>iNEXT Research Lab</strong><br />
                 304-A, Block 2, Department of Computer Science<br />
                 Indian Institute of Technology Patna<br />
                 Bihta, Patna – 801106<br />
@@ -39,14 +38,11 @@ export default function ContactPage() {
                 <br /><br />
                 <strong>Lab Email</strong><br />
                 <a href="mailto:inextiitpatna@gmail.com">inextiitpatna@gmail.com</a>
-                <br /><br />
-                <strong>Phone</strong><br />
-                +91-9475364212
               </address>
 
               <h2 className="mt-3">Prospective Students</h2>
               <address>
-                Interested in joining i-NEXT as a PhD scholar, M.Tech student, or research intern?
+                Interested in joining iNEXT as a PhD scholar, M.Tech student, or research intern?
                 Please email your CV and a brief research statement to{' '}
                 <a href="mailto:inextiitpatna@gmail.com">inextiitpatna@gmail.com</a>{' '}
                 with the subject line <em>&quot;Lab Inquiry – [Your Name]&quot;</em>.

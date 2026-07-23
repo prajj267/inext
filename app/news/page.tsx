@@ -27,7 +27,6 @@ export default function NewsPage() {
       <div className="page-banner">
         <div className="container">
           <h1>News &amp; Events</h1>
-          <p>Paper acceptances, invited talks, workshops, and other lab announcements — newest first.</p>
         </div>
       </div>
 

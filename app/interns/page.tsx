@@ -44,7 +44,6 @@ export default function InternsPage() {
       <div className="page-banner">
         <div className="container">
           <h1>Research Interns</h1>
-          <p>Interns who have worked with i-NEXT, grouped by year.</p>
         </div>
       </div>
       <main className="main-content" id="main">

@@ -252,6 +252,37 @@ ul {
   line-height: 1.75;
 }
 
+.hero-social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.hero-social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.hero-social-icons a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.hero-social-icons svg {
+  width: 20px;
+  height: 20px;
+}
+
 .hero-links {
   display: flex;
   gap: 1rem;
@@ -566,6 +597,24 @@ ul {
   color: var(--color-text);
   margin-bottom: 0.75rem;
   line-height: 1.5;
+}
+
+/* Alumni-specific fields */
+.member-card .member-organization,
+.member-card .member-thesis,
+.member-card .member-batch {
+  font-size: 0.82rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.member-card .member-organization strong,
+.member-card .member-thesis strong,
+.member-card .member-batch strong {
+  color: var(--color-accent);
+  font-weight: 600;
 }
 
 .member-links {
@@ -1487,8 +1536,8 @@ ul {
 .hero-slideshow {
   position: relative;
   flex-shrink: 0;
-  width: 420px;
-  height: 280px;
+  width: 480px;
+  height: 320px;
   border-radius: 6px;
   overflow: hidden;
 }

@@ -45,7 +45,6 @@ export default function StudentsPage() {
       <div className="page-banner">
         <div className="container">
           <h1>B.Tech Students</h1>
-          <p>Undergraduate researchers working with i-NEXT, grouped by batch year.</p>
         </div>
       </div>
       <main className="main-content" id="main">

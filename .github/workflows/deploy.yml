@@ -1,0 +1,78 @@
+name: Build and Deploy to IIT Server
+
+on:
+  # Trigger on push to main branch
+  push:
+    branches:
+      - main
+  
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Create .env file
+        run: |
+          echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" > .env
+      
+      - name: Build Next.js site
+        run: npm run build
+      
+      - name: Create deployment ZIP
+        run: |
+          cd out
+          zip -r ../inext-frontend-deploy.zip .
+          cd ..
+      
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-package
+          path: inext-frontend-deploy.zip
+          retention-days: 7
+      
+      # Optional: Auto-deploy to server (requires SSH credentials)
+      - name: Deploy to IIT Server
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          # Setup SSH
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
+          
+          # Upload and extract
+          scp -i ~/.ssh/deploy_key inext-frontend-deploy.zip ${SSH_USER}@${SSH_HOST}:~/
+          
+          ssh -i ~/.ssh/deploy_key ${SSH_USER}@${SSH_HOST} << 'EOF'
+            cd ~/public_html
+            rm -rf *
+            unzip ~/inext-frontend-deploy.zip
+            find . -type d -exec chmod 755 {} \;
+            find . -type f -exec chmod 644 {} \;
+            chmod -R 755 _next/
+            rm ~/inext-frontend-deploy.zip
+            echo "Deployment completed successfully"
+          EOF
+          
+          # Cleanup
+          rm ~/.ssh/deploy_key

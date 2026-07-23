@@ -10,14 +10,18 @@ export interface MemberLink {
 }
 
 export interface Member {
-  id?:      string;
-  name:     string;
-  role:     string;
-  category: MemberCategory;
-  focus:    string;
-  photo?:   string;
-  order:    number;
-  links:    MemberLink[];
+  id?:            string;
+  name:           string;
+  role?:          string;        // Optional now
+  category:       MemberCategory;
+  focus:          string;
+  photo?:         string;
+  order:          number;
+  // Alumni-specific fields
+  organization?:  string;        // For alumni: current organization
+  thesisTitle?:   string;        // For alumni: thesis title
+  batch?:         string;        // For alumni: e.g., "2015-2019"
+  links:          MemberLink[];
 }
 
 export type MemberCategory = 'FACULTY' | 'PHD' | 'MASTERS' | 'UNDERGRAD' | 'ALUMNI' | 'INTERN';

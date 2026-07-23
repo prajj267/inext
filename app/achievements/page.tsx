@@ -40,7 +40,6 @@ export default function AchievementsPage() {
       <div className="page-banner">
         <div className="container">
           <h1>Achievements</h1>
-          <p>Awards, fellowships, best-paper honours, and other recognitions received by lab members.</p>
         </div>
       </div>
 

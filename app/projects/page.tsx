@@ -40,7 +40,6 @@ export default function ProjectsPage() {
       <div className="page-banner">
         <div className="container">
           <h1>Projects</h1>
-          <p>Funded and consultancy projects led by i-NEXT at IIT Patna.</p>
         </div>
       </div>
 

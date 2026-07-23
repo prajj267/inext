@@ -11,6 +11,7 @@ const links = [
   { href: '/admin/publications',  label: '📄  Publications' },
   { href: '/admin/projects',     label: '🔬  Projects' },
   { href: '/admin/achievements',  label: '🏆  Achievements' },
+  { href: '/admin/slides',       label: '🖼️  Hero Slides' },
 ];
 
 export default function AdminNav() {
@@ -25,7 +26,7 @@ export default function AdminNav() {
   return (
     <aside className="admin-sidebar">
       <Link href="/admin" className="sidebar-logo">
-        i-NEXT Admin
+        iNEXT Admin
         <span>IIT Patna</span>
       </Link>
 
