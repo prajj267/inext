@@ -20,6 +20,7 @@ model Member {
   name            String
   role            String?        // Optional - can be empty
   category        MemberCategory
+  status          MemberStatus   @default(CURRENT) // CURRENT or ALUMNI
   focus           String
   photo           String?
   order           Int            @default(0)
@@ -47,6 +48,11 @@ enum MemberCategory {
   UNDERGRAD
   ALUMNI
   INTERN
+}
+
+enum MemberStatus {
+  CURRENT
+  ALUMNI
 }
 
 // ─── Publications ─────────────────────────────────────────────
