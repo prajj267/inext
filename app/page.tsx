@@ -78,6 +78,16 @@ export default function HomePage() {
                   applications for healthcare and agriculture.
                 </p>
               </section>
+
+              <section className="about-section" aria-labelledby="prospective-heading" style={{ marginTop: '2rem' }}>
+                <h2 id="prospective-heading">Prospective Students</h2>
+                <p>
+                  Interested in joining iNEXT as a Ph.D. scholar, M.Tech student, or research intern?
+                  Please email your CV and a brief research statement to{' '}
+                  <a href="mailto:inextiitpatna@gmail.com">inextiitpatna@gmail.com</a>{' '}
+                  with the subject line <em>&quot;Lab Inquiry – [Your Name]&quot;</em>.
+                </p>
+              </section>
             </div>
 
             <aside className="home-split-sidebar">
@@ -109,7 +119,7 @@ export default function HomePage() {
                   Dr. Arijit Roy is an Assistant Professor at IIT Patna. He was previously an
                   Assistant Professor at IIIT Sri City and a Post-Doctoral Research Fellow in the
                   Parallel Computing and Optimisation Group at the University of Luxembourg (2021–2022).
-                  He received his PhD and MS (by Research) from IIT Kharagpur, and his B.Tech in
+                  He received his Ph.D. and MS (by Research) from IIT Kharagpur, and his B.Tech in
                   Information Technology from WBUT.
                 </p>
                 <p>

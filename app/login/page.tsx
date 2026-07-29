@@ -36,7 +36,7 @@ export default function LoginPage() {
   return (
     <div className="login-page">
       <div className="login-card">
-        <h1>i-NEXT Admin</h1>
+        <h1>iNEXT Admin</h1>
         <p className="login-sub">Sign in to manage lab content</p>
 
         {error && <div className="error-msg">{error}</div>}

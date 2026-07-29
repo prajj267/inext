@@ -6,7 +6,7 @@ import { adminFetch, apiFetch } from '@/lib/api';
 import PhotoUploader from '@/components/PhotoUploader';
 
 interface Member {
-  id: string; name: string; role?: string; category: string;
+  id: string; name: string; role?: string; category: string; status?: string;
   focus: string; photo?: string; order: number;
   organization?: string; thesisTitle?: string; batch?: string;
   links: { label: string; href: string }[];
@@ -41,6 +41,7 @@ export default function EditMemberForm() {
         organization: form.organization?.trim() || null,
         thesisTitle: form.thesisTitle?.trim() || null,
         batch: form.batch?.trim() || null,
+        status: form.status || 'CURRENT',
       };
       
       await adminFetch(`/api/members/${id}`, {
@@ -69,11 +70,21 @@ export default function EditMemberForm() {
             </div>
           </div>
           <div className="form-row">
-            <div className="form-group"><label>Category</label>
-              <select value={form.category} onChange={e => setForm({...form, category: e.target.value})}>
-                <option value="FACULTY">Lead</option><option value="PHD">Ph.D.</option>
-                <option value="MASTERS">Masters</option><option value="UNDERGRAD">Undergrad</option>
-                <option value="ALUMNI">Alumni</option><option value="INTERN">Intern</option>
+            <div className="form-group"><label>Member Type</label>
+              <select 
+                value={`${form.category}-${form.status || 'CURRENT'}`} 
+                onChange={e => {
+                  const [cat, stat] = e.target.value.split('-');
+                  setForm({...form, category: cat, status: stat});
+                }}
+              >
+                <option value="FACULTY-CURRENT">Lead</option>
+                <option value="PHD-CURRENT">Ph.D. - Current</option>
+                <option value="PHD-ALUMNI">Ph.D. - Alumni</option>
+                <option value="MASTERS-CURRENT">Master&apos;s - Current</option>
+                <option value="MASTERS-ALUMNI">Master&apos;s - Alumni</option>
+                <option value="UNDERGRAD-CURRENT">Undergrad</option>
+                <option value="INTERN-CURRENT">Intern</option>
               </select>
             </div>
             <div className="form-group"><label>Order</label>
@@ -81,8 +92,9 @@ export default function EditMemberForm() {
             </div>
           </div>
           
-          <div className="form-group"><label>Research Focus</label>
-            <input value={form.focus} onChange={e => setForm({...form, focus: e.target.value})} required />
+          <div className="form-group"><label>Research Focus (optional)</label>
+            <input value={form.focus || ''} onChange={e => setForm({...form, focus: e.target.value || undefined})} 
+                   placeholder="Research interests or focus area" />
           </div>
           
           {/* Optional fields for all members */}
@@ -94,9 +106,9 @@ export default function EditMemberForm() {
             <input value={form.thesisTitle || ''} onChange={e => setForm({...form, thesisTitle: e.target.value || undefined})} 
                    placeholder="Title of thesis work" />
           </div>
-          <div className="form-group"><label>Batch (optional)</label>
+          <div className="form-group"><label>Year (optional)</label>
             <input value={form.batch || ''} onChange={e => setForm({...form, batch: e.target.value || undefined})} 
-                   placeholder="e.g., 2015-2019" />
+                   placeholder="e.g., 2015-2019, 2020, 2018-2022" />
           </div>
           
           <div className="form-group"><label>Photo</label>

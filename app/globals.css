@@ -638,6 +638,125 @@ ul {
 }
 
 /* ============================================================
+   LEAD CARD — HORIZONTAL LAYOUT FOR FACULTY
+   ============================================================ */
+.lead-card {
+  background: #f8f8f8;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 2rem;
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  max-width: 900px;
+}
+
+.lead-photo {
+  width: 200px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #e8e8e8;
+  flex-shrink: 0;
+}
+
+.lead-photo-placeholder {
+  width: 200px;
+  height: 240px;
+  background: #e8e8e8;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.lead-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lead-info h3 {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.lead-info .lead-role {
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: -0.25rem;
+}
+
+.lead-info .lead-focus {
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-top: 0.25rem;
+}
+
+.lead-info .lead-organization,
+.lead-info .lead-thesis,
+.lead-info .lead-batch {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.lead-info .lead-organization strong,
+.lead-info .lead-thesis strong,
+.lead-info .lead-batch strong {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.lead-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.lead-links a {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.4rem 0.85rem;
+  border-radius: 3px;
+  transition: background 0.15s;
+}
+
+.lead-links a:hover {
+  background: #f2f2f2;
+  text-decoration: none;
+}
+
+/* Responsive: stack vertically on mobile */
+@media (max-width: 600px) {
+  .lead-card {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .lead-info {
+    align-items: center;
+  }
+}
+
+/* ============================================================
    PUBLICATIONS PAGE
    ============================================================ */
 .pub-year-group {

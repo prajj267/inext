@@ -8,7 +8,7 @@ import PhotoUploader from '@/components/PhotoUploader';
 export default function NewMemberPage() {
   const router = useRouter();
   const [form, setForm] = useState({
-    name: '', role: '', category: 'PHD', focus: '', photo: '', order: 0,
+    name: '', role: '', category: 'PHD', status: 'CURRENT', focus: '', photo: '', order: 0,
     organization: '', thesisTitle: '', batch: '',
     links: '',
   });
@@ -29,6 +29,7 @@ export default function NewMemberPage() {
         organization: form.organization?.trim() || null,
         thesisTitle: form.thesisTitle?.trim() || null,
         batch: form.batch?.trim() || null,
+        status: form.status || 'CURRENT',
       };
       
       await adminFetch('/api/members', {
@@ -58,14 +59,21 @@ export default function NewMemberPage() {
           </div>
           <div className="form-row">
             <div className="form-group">
-              <label>Category</label>
-              <select value={form.category} onChange={e => setForm({...form, category: e.target.value})}>
-                <option value="FACULTY">Lead</option>
-                <option value="PHD">Ph.D.</option>
-                <option value="MASTERS">Masters</option>
-                <option value="UNDERGRAD">Undergrad</option>
-                <option value="ALUMNI">Alumni</option>
-                <option value="INTERN">Intern</option>
+              <label>Member Type</label>
+              <select 
+                value={`${form.category}-${form.status}`} 
+                onChange={e => {
+                  const [cat, stat] = e.target.value.split('-');
+                  setForm({...form, category: cat, status: stat});
+                }}
+              >
+                <option value="FACULTY-CURRENT">Lead</option>
+                <option value="PHD-CURRENT">Ph.D. - Current</option>
+                <option value="PHD-ALUMNI">Ph.D. - Alumni</option>
+                <option value="MASTERS-CURRENT">Master&apos;s - Current</option>
+                <option value="MASTERS-ALUMNI">Master&apos;s - Alumni</option>
+                <option value="UNDERGRAD-CURRENT">Undergrad</option>
+                <option value="INTERN-CURRENT">Intern</option>
               </select>
             </div>
             <div className="form-group">
@@ -75,8 +83,9 @@ export default function NewMemberPage() {
           </div>
           
           <div className="form-group">
-            <label>Research Focus</label>
-            <input value={form.focus} onChange={e => setForm({...form, focus: e.target.value})} required />
+            <label>Research Focus (optional)</label>
+            <input value={form.focus} onChange={e => setForm({...form, focus: e.target.value})} 
+                   placeholder="Research interests or focus area" />
           </div>
           
           {/* Optional fields for all members */}
@@ -91,9 +100,9 @@ export default function NewMemberPage() {
                    placeholder="Title of thesis work" />
           </div>
           <div className="form-group">
-            <label>Batch (optional)</label>
+            <label>Year (optional)</label>
             <input value={form.batch} onChange={e => setForm({...form, batch: e.target.value})} 
-                   placeholder="e.g., 2015-2019" />
+                   placeholder="e.g., 2015-2019, 2020, 2018-2022" />
           </div>
           
           <div className="form-group">

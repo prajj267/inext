@@ -6,11 +6,11 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <Link href="/" className="site-logo" aria-label="i-NEXT home">
+        <Link href="/" className="site-logo" aria-label="iNEXT home">
           <span className="logo-wrap">
             <Image
               src="/images/gallery/inext.png"
-              alt="i-NEXT logo"
+              alt="iNEXT logo"
               fill
               className="logo-img"
               priority

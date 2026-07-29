@@ -4,10 +4,18 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { apiFetch } from '@/lib/api';
 
-interface Intern { id: string; name: string; focus: string; }
+interface Intern { id: string; name: string; focus: string; batch?: string; }
 
-function getYear(focus: string) {
-  const m = focus.match(/Year:\s*(\d{4})/);
+function getYear(intern: Intern) {
+  // First try the batch field
+  if (intern.batch) {
+    // Extract year from batch (e.g., "2024", "2023-2024")
+    const match = intern.batch.match(/(\d{4})/);
+    return match ? match[1] : 'Other';
+  }
+  
+  // Fallback to parsing focus field for old data
+  const m = intern.focus.match(/Year:\s*(\d{4})/);
   return m ? m[1] : 'Other';
 }
 
@@ -26,7 +34,7 @@ export default function InternsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    apiFetch<{ category: string; name: string; focus: string; id: string }[]>('/api/members')
+    apiFetch<{ category: string; name: string; focus: string; batch?: string; id: string }[]>('/api/members')
       .then((all) => setInterns(all.filter((m) => m.category === 'INTERN')))
       .catch(console.error)
       .finally(() => setLoading(false));
@@ -34,10 +42,15 @@ export default function InternsPage() {
 
   const grouped: Record<string, Intern[]> = {};
   for (const s of interns) {
-    const y = getYear(s.focus);
+    const y = getYear(s);
     (grouped[y] ??= []).push(s);
   }
-  const years = Object.keys(grouped).sort((a, b) => Number(b) - Number(a));
+  const years = Object.keys(grouped).sort((a, b) => {
+    // Sort "Other" to the end
+    if (a === 'Other') return 1;
+    if (b === 'Other') return -1;
+    return Number(b) - Number(a);
+  });
 
   return (
     <>

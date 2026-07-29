@@ -31,8 +31,8 @@ export default function MemberCard({ member }: Props) {
       {/* Show role only if it exists */}
       {member.role && <p className="member-role">{member.role}</p>}
       
-      {/* Show focus */}
-      <p className="member-focus">{member.focus}</p>
+      {/* Show focus only if it exists */}
+      {member.focus && <p className="member-focus">{member.focus}</p>}
       
       {/* Show optional fields if they exist */}
       {member.organization && (
@@ -47,15 +47,15 @@ export default function MemberCard({ member }: Props) {
       )}
       {member.batch && (
         <p className="member-batch">
-          <strong>Batch:</strong> {member.batch}
+          <strong>Year:</strong> {member.batch}
         </p>
       )}
 
       {member.links.length > 0 && (
         <div className="member-links">
-          {member.links.map((link) => (
+          {member.links.map((link, index) => (
             <a
-              key={link.label}
+              key={`${link.href}-${index}`}
               href={link.href}
               target={link.href.startsWith('mailto:') ? undefined : '_blank'}
               rel={link.href.startsWith('mailto:') ? undefined : 'noopener'}

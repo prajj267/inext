@@ -18,11 +18,16 @@ model AdminUser {
 model Member {
   id        String         @id @default(cuid())
   name      String
-  role      String
+  role      String?        // Optional
   category  MemberCategory
-  focus     String
+  status    MemberStatus   @default(CURRENT) // CURRENT or ALUMNI
+  focus     String?        // Optional - research focus area
   photo     String?
   order     Int            @default(0)
+  // Alumni-specific optional fields
+  organization  String?    // For alumni: current organization
+  thesisTitle   String?    // For alumni: thesis title
+  batch         String?    // For alumni: e.g., "2015-2019"
   links     MemberLink[]
   createdAt DateTime       @default(now())
   updatedAt DateTime       @updatedAt
@@ -43,6 +48,11 @@ enum MemberCategory {
   UNDERGRAD
   ALUMNI
   INTERN
+}
+
+enum MemberStatus {
+  CURRENT
+  ALUMNI
 }
 
 // ─── Publications ─────────────────────────────────────────────

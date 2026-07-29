@@ -12,9 +12,10 @@ export interface MemberLink {
 export interface Member {
   id?:            string;
   name:           string;
-  role?:          string;        // Optional now
+  role?:          string;        // Optional
   category:       MemberCategory;
-  focus:          string;
+  status?:        MemberStatus;  // CURRENT or ALUMNI
+  focus?:         string;        // Optional - research focus area
   photo?:         string;
   order:          number;
   // Alumni-specific fields
@@ -25,6 +26,7 @@ export interface Member {
 }
 
 export type MemberCategory = 'FACULTY' | 'PHD' | 'MASTERS' | 'UNDERGRAD' | 'ALUMNI' | 'INTERN';
+export type MemberStatus = 'CURRENT' | 'ALUMNI';
 
 export interface AuthorSegment {
   id?:   string;

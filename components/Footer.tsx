@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-        <p>&copy; {new Date().getFullYear()} i-NEXT Research Lab, IIT Patna. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} iNEXT Research Lab, IIT Patna. All rights reserved.</p>
         <nav className="footer-links" aria-label="Footer navigation">
           <Link href="/">Home</Link>
           <Link href="/members">Members</Link>

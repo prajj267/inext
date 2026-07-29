@@ -4,18 +4,29 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { apiFetch } from '@/lib/api';
 import MemberCard from '@/components/MemberCard';
+import LeadCard from '@/components/LeadCard';
 import type { Member } from '@/lib/types';
 
 function MemberSection({ id, heading, members }: { id: string; heading: string; members: Member[] }) {
   if (members.length === 0) return null;
+  
+  // Check if this is the Lead section
+  const isLeadSection = members.length === 1 && members[0].category === 'FACULTY';
+  
   return (
     <section className="members-section" aria-labelledby={id}>
       <h2 id={id}>{heading}</h2>
-      <div className="members-grid">
-        {members.map((m) => (
-          <MemberCard key={m.id ?? m.name} member={m} />
-        ))}
-      </div>
+      {isLeadSection ? (
+        // Single horizontal card for lead
+        <LeadCard member={members[0]} />
+      ) : (
+        // Grid for other members
+        <div className="members-grid">
+          {members.map((m) => (
+            <MemberCard key={m.id ?? m.name} member={m} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
@@ -40,18 +51,24 @@ export default function MembersPage() {
   const byCat = (cat: string) => {
     const members = raw.filter((m) => m.category === cat);
     
-    // Special sorting for M.Tech: Karan Yadav always first
-    if (cat === 'MASTERS') {
-      const karanYadav = members.find((m) => m.name.toLowerCase().includes('karan yadav'));
-      const others = members.filter((m) => !m.name.toLowerCase().includes('karan yadav'));
-      return karanYadav ? [karanYadav, ...others] : members;
-    }
+    // Sort by order field (lower numbers first)
+    return members.sort((a, b) => a.order - b.order);
+  };
+  
+  const byCatAndStatus = (cat: string, status: string) => {
+    const members = raw.filter((m) => m.category === cat && m.status === status);
     
-    return members;
+    // Sort by order field (lower numbers first)
+    return members.sort((a, b) => a.order - b.order);
   };
 
-  const phdMembers = byCat('PHD');
-  const mastersMembers = byCat('MASTERS');
+  const phdCurrent = byCatAndStatus('PHD', 'CURRENT');
+  const mastersCurrent = byCatAndStatus('MASTERS', 'CURRENT');
+  const phdAlumni = byCatAndStatus('PHD', 'ALUMNI');
+  const mastersAlumni = byCatAndStatus('MASTERS', 'ALUMNI');
+  
+  // Legacy alumni (those with category ALUMNI)
+  const legacyAlumni = byCat('ALUMNI');
 
   return (
     <>
@@ -70,12 +87,12 @@ export default function MembersPage() {
               <MemberSection id="faculty-heading"  heading="Lead" members={byCat('FACULTY')} />
               
               {/* Current Scholars Section */}
-              {(phdMembers.length > 0 || mastersMembers.length > 0) && (
+              {(phdCurrent.length > 0 || mastersCurrent.length > 0) && (
                 <section className="members-section" aria-labelledby="scholars-heading">
                   <h2 id="scholars-heading">Current Scholars</h2>
                   
                   {/* Ph.D. Students */}
-                  {phdMembers.length > 0 && (
+                  {phdCurrent.length > 0 && (
                     <>
                       <h3 style={{ 
                         fontSize: '1.25rem', 
@@ -84,7 +101,7 @@ export default function MembersPage() {
                         color: 'var(--color-accent)'
                       }}>Ph.D.</h3>
                       <div className="members-grid" style={{ marginBottom: '2rem' }}>
-                        {phdMembers.map((m) => (
+                        {phdCurrent.map((m) => (
                           <MemberCard key={m.id ?? m.name} member={m} />
                         ))}
                       </div>
@@ -92,7 +109,7 @@ export default function MembersPage() {
                   )}
                   
                   {/* Master's Students */}
-                  {mastersMembers.length > 0 && (
+                  {mastersCurrent.length > 0 && (
                     <>
                       <h3 style={{ 
                         fontSize: '1.25rem', 
@@ -101,7 +118,7 @@ export default function MembersPage() {
                         color: 'var(--color-accent)'
                       }}>Master&apos;s</h3>
                       <div className="members-grid">
-                        {mastersMembers.map((m) => (
+                        {mastersCurrent.map((m) => (
                           <MemberCard key={m.id ?? m.name} member={m} />
                         ))}
                       </div>
@@ -110,7 +127,55 @@ export default function MembersPage() {
                 </section>
               )}
               
-              <MemberSection id="alumni-heading"   heading="Alumni" members={byCat('ALUMNI')} />
+              {/* Alumni Section - Divided by Ph.D. and Master's */}
+              {(phdAlumni.length > 0 || mastersAlumni.length > 0 || legacyAlumni.length > 0) && (
+                <section className="members-section" aria-labelledby="alumni-heading">
+                  <h2 id="alumni-heading">Alumni</h2>
+                  
+                  {/* Ph.D. Alumni */}
+                  {phdAlumni.length > 0 && (
+                    <>
+                      <h3 style={{ 
+                        fontSize: '1.25rem', 
+                        fontWeight: 500, 
+                        marginBottom: '1rem',
+                        color: 'var(--color-accent)'
+                      }}>Ph.D.</h3>
+                      <div className="members-grid" style={{ marginBottom: '2rem' }}>
+                        {phdAlumni.map((m) => (
+                          <MemberCard key={m.id ?? m.name} member={m} />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                  
+                  {/* Master's Alumni */}
+                  {mastersAlumni.length > 0 && (
+                    <>
+                      <h3 style={{ 
+                        fontSize: '1.25rem', 
+                        fontWeight: 500, 
+                        marginBottom: '1rem',
+                        color: 'var(--color-accent)'
+                      }}>Master&apos;s</h3>
+                      <div className="members-grid" style={{ marginBottom: '2rem' }}>
+                        {mastersAlumni.map((m) => (
+                          <MemberCard key={m.id ?? m.name} member={m} />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                  
+                  {/* Legacy Alumni (for backwards compatibility) */}
+                  {legacyAlumni.length > 0 && (
+                    <div className="members-grid">
+                      {legacyAlumni.map((m) => (
+                        <MemberCard key={m.id ?? m.name} member={m} />
+                      ))}
+                    </div>
+                  )}
+                </section>
+              )}
             </>
           )}
 
@@ -125,7 +190,7 @@ export default function MembersPage() {
           <section className="members-section" aria-labelledby="interns-heading">
             <h2 id="interns-heading">Research Interns</h2>
             <p style={{ fontSize: '0.93rem', color: 'var(--color-accent)', marginBottom: '1rem' }}>
-              Research interns who have worked with i-NEXT, listed by year.
+              Research interns who have worked with iNEXT, listed by year.
             </p>
             <Link href="/interns" className="btn-new">View Research Interns →</Link>
           </section>
