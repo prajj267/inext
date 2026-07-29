@@ -602,9 +602,7 @@ ul {
 /* Alumni-specific fields */
 .member-card .member-organization,
 .member-card .member-thesis,
-.member-card .member-batch,
-.member-card .member-supervisor,
-.member-card .member-cosupervisor {
+.member-card .member-batch {
   font-size: 0.82rem;
   color: var(--color-text);
   margin-bottom: 0.5rem;
@@ -614,11 +612,45 @@ ul {
 
 .member-card .member-organization strong,
 .member-card .member-thesis strong,
-.member-card .member-batch strong,
-.member-card .member-supervisor strong,
-.member-card .member-cosupervisor strong {
+.member-card .member-batch strong {
   color: var(--color-accent);
   font-weight: 600;
+}
+
+/* Supervision info - PhD students */
+.member-supervision {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e8eef3 100%);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 4px;
+  padding: 0.75rem 0.85rem;
+  margin: 0.75rem 0;
+  text-align: left;
+}
+
+.supervisor-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.supervisor-item:last-child {
+  margin-bottom: 0;
+}
+
+.supervision-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.supervision-name {
+  font-size: 0.88rem;
+  color: var(--color-text);
+  font-weight: 500;
+  line-height: 1.3;
 }
 
 .member-links {

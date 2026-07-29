@@ -34,16 +34,22 @@ export default function MemberCard({ member }: Props) {
       {/* Show focus only if it exists */}
       {member.focus && <p className="member-focus">{member.focus}</p>}
       
-      {/* PhD-specific fields */}
-      {member.supervisor && (
-        <p className="member-supervisor">
-          <strong>Supervisor:</strong> {member.supervisor}
-        </p>
-      )}
-      {member.coSupervisor && (
-        <p className="member-cosupervisor">
-          <strong>Co-Supervisor:</strong> {member.coSupervisor}
-        </p>
+      {/* PhD-specific fields - supervisor info */}
+      {(member.supervisor || member.coSupervisor) && (
+        <div className="member-supervision">
+          {member.supervisor && (
+            <p className="supervisor-item">
+              <span className="supervision-label">Supervisor:</span>
+              <span className="supervision-name">{member.supervisor}</span>
+            </p>
+          )}
+          {member.coSupervisor && (
+            <p className="supervisor-item">
+              <span className="supervision-label">Co-Supervisor:</span>
+              <span className="supervision-name">{member.coSupervisor}</span>
+            </p>
+          )}
+        </div>
       )}
       
       {/* Show optional fields if they exist */}
