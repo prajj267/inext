@@ -711,9 +711,7 @@ ul {
 
 .lead-info .lead-organization,
 .lead-info .lead-thesis,
-.lead-info .lead-batch,
-.lead-info .lead-supervisor,
-.lead-info .lead-cosupervisor {
+.lead-info .lead-batch {
   font-size: 0.9rem;
   color: var(--color-text);
   line-height: 1.5;
@@ -721,9 +719,7 @@ ul {
 
 .lead-info .lead-organization strong,
 .lead-info .lead-thesis strong,
-.lead-info .lead-batch strong,
-.lead-info .lead-supervisor strong,
-.lead-info .lead-cosupervisor strong {
+.lead-info .lead-batch strong {
   color: var(--color-accent);
   font-weight: 600;
 }
