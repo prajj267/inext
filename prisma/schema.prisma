@@ -25,8 +25,8 @@ model Member {
   photo     String?
   order     Int            @default(0)
   // PhD-specific fields
-  supervisor      String?    // For PhD students: supervisor name
-  coSupervisor    String?    // For PhD students: co-supervisor name
+  isSupervisor      Boolean @default(false)  // Is this PhD student a supervisor?
+  isCoSupervisor    Boolean @default(false)  // Is this PhD student a co-supervisor?
   // Alumni-specific optional fields
   organization  String?    // For alumni: current organization
   thesisTitle   String?    // For alumni: thesis title

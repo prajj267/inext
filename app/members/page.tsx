@@ -91,20 +91,75 @@ export default function MembersPage() {
                 <section className="members-section" aria-labelledby="scholars-heading">
                   <h2 id="scholars-heading">Current Scholars</h2>
                   
-                  {/* Ph.D. Students */}
+                  {/* Ph.D. Students - Grouped by Supervisor/Co-Supervisor/Regular */}
                   {phdCurrent.length > 0 && (
                     <>
                       <h3 style={{ 
                         fontSize: '1.25rem', 
                         fontWeight: 500, 
-                        marginBottom: '1rem',
+                        marginBottom: '1.5rem',
                         color: 'var(--color-accent)'
                       }}>Ph.D.</h3>
-                      <div className="members-grid" style={{ marginBottom: '2rem' }}>
-                        {phdCurrent.map((m) => (
-                          <MemberCard key={m.id ?? m.name} member={m} />
-                        ))}
-                      </div>
+                      
+                      {/* Supervisor Subsection */}
+                      {(() => {
+                        const supervisors = phdCurrent.filter(m => m.isSupervisor);
+                        return supervisors.length > 0 ? (
+                          <div style={{ marginBottom: '2.5rem' }}>
+                            <h4 style={{
+                              fontSize: '0.95rem',
+                              fontWeight: 600,
+                              marginBottom: '1rem',
+                              color: 'var(--color-text)',
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.05em'
+                            }}>
+                              Supervisor
+                            </h4>
+                            <div className="members-grid">
+                              {supervisors.map((m) => (
+                                <MemberCard key={m.id ?? m.name} member={m} />
+                              ))}
+                            </div>
+                          </div>
+                        ) : null;
+                      })()}
+                      
+                      {/* Co-Supervisor Subsection */}
+                      {(() => {
+                        const coSupervisors = phdCurrent.filter(m => m.isCoSupervisor);
+                        return coSupervisors.length > 0 ? (
+                          <div style={{ marginBottom: '2.5rem' }}>
+                            <h4 style={{
+                              fontSize: '0.95rem',
+                              fontWeight: 600,
+                              marginBottom: '1rem',
+                              color: 'var(--color-text)',
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.05em'
+                            }}>
+                              Co-Supervisor
+                            </h4>
+                            <div className="members-grid">
+                              {coSupervisors.map((m) => (
+                                <MemberCard key={m.id ?? m.name} member={m} />
+                              ))}
+                            </div>
+                          </div>
+                        ) : null;
+                      })()}
+                      
+                      {/* Regular PhD Students (not supervisor or co-supervisor) */}
+                      {(() => {
+                        const regularPhd = phdCurrent.filter(m => !m.isSupervisor && !m.isCoSupervisor);
+                        return regularPhd.length > 0 ? (
+                          <div className="members-grid" style={{ marginBottom: '2rem' }}>
+                            {regularPhd.map((m) => (
+                              <MemberCard key={m.id ?? m.name} member={m} />
+                            ))}
+                          </div>
+                        ) : null;
+                      })()}
                     </>
                   )}
                   

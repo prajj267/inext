@@ -9,7 +9,7 @@ export default function NewMemberPage() {
   const router = useRouter();
   const [form, setForm] = useState({
     name: '', role: '', category: 'PHD', status: 'CURRENT', focus: '', photo: '', order: 0,
-    supervisor: '', coSupervisor: '',
+    isSupervisor: false, isCoSupervisor: false,
     organization: '', thesisTitle: '', batch: '',
     links: '',
   });
@@ -28,8 +28,8 @@ export default function NewMemberPage() {
         ...form,
         role: form.role?.trim() || null,
         focus: form.focus?.trim() || null,
-        supervisor: form.supervisor?.trim() || null,
-        coSupervisor: form.coSupervisor?.trim() || null,
+        isSupervisor: form.isSupervisor || false,
+        isCoSupervisor: form.isCoSupervisor || false,
         organization: form.organization?.trim() || null,
         thesisTitle: form.thesisTitle?.trim() || null,
         batch: form.batch?.trim() || null,
@@ -97,14 +97,24 @@ export default function NewMemberPage() {
             <>
               <div className="form-row">
                 <div className="form-group">
-                  <label>Supervisor (optional)</label>
-                  <input value={form.supervisor} onChange={e => setForm({...form, supervisor: e.target.value})} 
-                         placeholder="Supervisor name" />
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <input 
+                      type="checkbox" 
+                      checked={form.isSupervisor} 
+                      onChange={e => setForm({...form, isSupervisor: e.target.checked})} 
+                    />
+                    Is Supervisor
+                  </label>
                 </div>
                 <div className="form-group">
-                  <label>Co-Supervisor (optional)</label>
-                  <input value={form.coSupervisor} onChange={e => setForm({...form, coSupervisor: e.target.value})} 
-                         placeholder="Co-supervisor name" />
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <input 
+                      type="checkbox" 
+                      checked={form.isCoSupervisor} 
+                      onChange={e => setForm({...form, isCoSupervisor: e.target.checked})} 
+                    />
+                    Is Co-Supervisor
+                  </label>
                 </div>
               </div>
             </>

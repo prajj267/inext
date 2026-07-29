@@ -8,7 +8,7 @@ import PhotoUploader from '@/components/PhotoUploader';
 interface Member {
   id: string; name: string; role?: string; category: string; status?: string;
   focus?: string; photo?: string; order: number;
-  supervisor?: string; coSupervisor?: string;
+  isSupervisor?: boolean; isCoSupervisor?: boolean;
   organization?: string; thesisTitle?: string; batch?: string;
   links: { label: string; href: string }[];
 }
@@ -40,8 +40,8 @@ export default function EditMemberForm() {
         ...form,
         role: form.role?.trim() || null,
         focus: form.focus?.trim() || null,
-        supervisor: form.supervisor?.trim() || null,
-        coSupervisor: form.coSupervisor?.trim() || null,
+        isSupervisor: form.isSupervisor || false,
+        isCoSupervisor: form.isCoSupervisor || false,
         organization: form.organization?.trim() || null,
         thesisTitle: form.thesisTitle?.trim() || null,
         batch: form.batch?.trim() || null,
@@ -105,13 +105,25 @@ export default function EditMemberForm() {
           {(form.category === 'PHD') && (
             <>
               <div className="form-row">
-                <div className="form-group"><label>Supervisor (optional)</label>
-                  <input value={form.supervisor || ''} onChange={e => setForm({...form, supervisor: e.target.value || undefined})} 
-                         placeholder="Supervisor name" />
+                <div className="form-group">
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <input 
+                      type="checkbox" 
+                      checked={form.isSupervisor || false} 
+                      onChange={e => setForm({...form, isSupervisor: e.target.checked})} 
+                    />
+                    Is Supervisor
+                  </label>
                 </div>
-                <div className="form-group"><label>Co-Supervisor (optional)</label>
-                  <input value={form.coSupervisor || ''} onChange={e => setForm({...form, coSupervisor: e.target.value || undefined})} 
-                         placeholder="Co-supervisor name" />
+                <div className="form-group">
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <input 
+                      type="checkbox" 
+                      checked={form.isCoSupervisor || false} 
+                      onChange={e => setForm({...form, isCoSupervisor: e.target.checked})} 
+                    />
+                    Is Co-Supervisor
+                  </label>
                 </div>
               </div>
             </>
