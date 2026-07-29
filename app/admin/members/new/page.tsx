@@ -92,9 +92,15 @@ export default function NewMemberPage() {
                    placeholder="Research interests or focus area" />
           </div>
           
+          {/* DEBUG: Show category value */}
+          <div style={{ padding: '0.5rem', background: '#ffffcc', margin: '0.5rem 0' }}>
+            DEBUG: category = "{form.category}"
+          </div>
+          
           {/* PhD-specific fields */}
           {form.category === 'PHD' && (
-            <>
+            <div style={{ border: '2px solid red', padding: '1rem', margin: '1rem 0' }}>
+              <p style={{ color: 'red', fontWeight: 'bold' }}>PhD CHECKBOXES SECTION</p>
               <div className="form-row">
                 <div className="form-group">
                   <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -117,7 +123,7 @@ export default function NewMemberPage() {
                   </label>
                 </div>
               </div>
-            </>
+            </div>
           )}
           
           {/* Optional fields for all members */}
