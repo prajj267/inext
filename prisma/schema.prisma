@@ -24,6 +24,9 @@ model Member {
   focus     String?        // Optional - research focus area
   photo     String?
   order     Int            @default(0)
+  // PhD-specific fields
+  supervisor      String?    // For PhD students: supervisor name
+  coSupervisor    String?    // For PhD students: co-supervisor name
   // Alumni-specific optional fields
   organization  String?    // For alumni: current organization
   thesisTitle   String?    // For alumni: thesis title

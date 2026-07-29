@@ -18,6 +18,9 @@ export interface Member {
   focus?:         string;        // Optional - research focus area
   photo?:         string;
   order:          number;
+  // PhD-specific fields
+  supervisor?:    string;        // For PhD students: supervisor name
+  coSupervisor?:  string;        // For PhD students: co-supervisor name
   // Alumni-specific fields
   organization?:  string;        // For alumni: current organization
   thesisTitle?:   string;        // For alumni: thesis title

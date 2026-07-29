@@ -9,6 +9,7 @@ export default function NewMemberPage() {
   const router = useRouter();
   const [form, setForm] = useState({
     name: '', role: '', category: 'PHD', status: 'CURRENT', focus: '', photo: '', order: 0,
+    supervisor: '', coSupervisor: '',
     organization: '', thesisTitle: '', batch: '',
     links: '',
   });
@@ -26,6 +27,9 @@ export default function NewMemberPage() {
       const cleanedForm = {
         ...form,
         role: form.role?.trim() || null,
+        focus: form.focus?.trim() || null,
+        supervisor: form.supervisor?.trim() || null,
+        coSupervisor: form.coSupervisor?.trim() || null,
         organization: form.organization?.trim() || null,
         thesisTitle: form.thesisTitle?.trim() || null,
         batch: form.batch?.trim() || null,
@@ -87,6 +91,24 @@ export default function NewMemberPage() {
             <input value={form.focus} onChange={e => setForm({...form, focus: e.target.value})} 
                    placeholder="Research interests or focus area" />
           </div>
+          
+          {/* PhD-specific fields */}
+          {form.category === 'PHD' && (
+            <>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Supervisor (optional)</label>
+                  <input value={form.supervisor} onChange={e => setForm({...form, supervisor: e.target.value})} 
+                         placeholder="Supervisor name" />
+                </div>
+                <div className="form-group">
+                  <label>Co-Supervisor (optional)</label>
+                  <input value={form.coSupervisor} onChange={e => setForm({...form, coSupervisor: e.target.value})} 
+                         placeholder="Co-supervisor name" />
+                </div>
+              </div>
+            </>
+          )}
           
           {/* Optional fields for all members */}
           <div className="form-group">

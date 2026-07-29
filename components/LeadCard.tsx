@@ -35,6 +35,18 @@ export default function LeadCard({ member }: Props) {
           <p className="lead-focus">{member.focus}</p>
         )}
         
+        {member.supervisor && (
+          <p className="lead-supervisor">
+            <strong>Supervisor:</strong> {member.supervisor}
+          </p>
+        )}
+        
+        {member.coSupervisor && (
+          <p className="lead-cosupervisor">
+            <strong>Co-Supervisor:</strong> {member.coSupervisor}
+          </p>
+        )}
+        
         {member.organization && (
           <p className="lead-organization">
             <strong>Organization:</strong> {member.organization}

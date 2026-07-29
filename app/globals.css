@@ -602,7 +602,9 @@ ul {
 /* Alumni-specific fields */
 .member-card .member-organization,
 .member-card .member-thesis,
-.member-card .member-batch {
+.member-card .member-batch,
+.member-card .member-supervisor,
+.member-card .member-cosupervisor {
   font-size: 0.82rem;
   color: var(--color-text);
   margin-bottom: 0.5rem;
@@ -612,7 +614,9 @@ ul {
 
 .member-card .member-organization strong,
 .member-card .member-thesis strong,
-.member-card .member-batch strong {
+.member-card .member-batch strong,
+.member-card .member-supervisor strong,
+.member-card .member-cosupervisor strong {
   color: var(--color-accent);
   font-weight: 600;
 }
@@ -707,7 +711,9 @@ ul {
 
 .lead-info .lead-organization,
 .lead-info .lead-thesis,
-.lead-info .lead-batch {
+.lead-info .lead-batch,
+.lead-info .lead-supervisor,
+.lead-info .lead-cosupervisor {
   font-size: 0.9rem;
   color: var(--color-text);
   line-height: 1.5;
@@ -715,7 +721,9 @@ ul {
 
 .lead-info .lead-organization strong,
 .lead-info .lead-thesis strong,
-.lead-info .lead-batch strong {
+.lead-info .lead-batch strong,
+.lead-info .lead-supervisor strong,
+.lead-info .lead-cosupervisor strong {
   color: var(--color-accent);
   font-weight: 600;
 }
