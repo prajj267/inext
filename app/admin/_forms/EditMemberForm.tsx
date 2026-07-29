@@ -7,7 +7,7 @@ import PhotoUploader from '@/components/PhotoUploader';
 
 interface Member {
   id: string; name: string; role?: string; category: string; status?: string;
-  focus: string; photo?: string; order: number;
+  focus?: string; photo?: string; order: number;
   supervisor?: string; coSupervisor?: string;
   organization?: string; thesisTitle?: string; batch?: string;
   links: { label: string; href: string }[];
